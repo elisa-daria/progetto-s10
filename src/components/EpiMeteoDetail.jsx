@@ -37,7 +37,8 @@ const EpiMeteoDetail = () => {
     <Container>
       <Row className="justify-content-center mt-5">
         <Col md={7}>
-          {weatherDetail && (
+          {/* sono un'idiota */}
+          {cityName && (
             <Card>
               <Card.Body>
                 <Card.Title>{weatherDetail.name}</Card.Title>
