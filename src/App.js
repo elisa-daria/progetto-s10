@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import EpiMeteoCarousel from "./components/EpiMeteoCarousel";
+import EpiMeteoDetail from "./components/EpiMeteoDetail";
+import EpiMeteoFooter from "./components/EpiMeteoFooter";
+import EpiMeteoNavBar from "./components/EpiMeteoNavBar";
+import NotFound from "./components/NotFound";
+import WelcomeStatement from "./components/WelcomeStatement";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+      <header>
+        <EpiMeteoNavBar />
+        <WelcomeStatement />
       </header>
-    </div>
+      <main className="flex-grow-1 h-100 bg-info-subtle">
+        <Routes>
+          <Route element={<EpiMeteoCarousel />} path="/" />
+          <Route element={<EpiMeteoDetail />} path="/detail/:city" />
+          <Route element={<NotFound />} path="*" />
+        </Routes>
+      </main>
+      <footer>
+        <EpiMeteoFooter />
+      </footer>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
